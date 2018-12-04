@@ -5,11 +5,11 @@ defmodule Assign2_2 do
     list = "data/assign2.data"
              |> File.read!()
              |> String.split("\r\n")
-
-    Enum.map(list, fn item ->
+    list
+    |> Enum.map(fn item ->
       {item, calculate(item, list)}
     end)
-    Enum.sort(result, &(elem(elem(&1, 1),1) > elem(elem(&2,1),1)))
+    |> Enum.sort(&(elem(elem(&1, 1),1) > elem(elem(&2,1),1)))
 
   end
 
