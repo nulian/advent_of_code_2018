@@ -13,26 +13,17 @@ defmodule Assign5_1 do
   end
 
   def reduce_string(string, length) do
-  result =string
-    |> Enum.reduce({nil, []}, fn
-      char, {nil, []} -> {char, [char]}
-      char, {nil, list} -> {char, [char | list]}
-      char, {prev, list} when (prev in @lowercase and char in @lowercase) or (prev in @uppercase and char in @uppercase) -> {char, [char | list]}
-      char, {prev, list} ->
+    string
+    |> Enum.reduce([], fn
+      char, [] -> [char]
+      char, [prev | _] = list when (prev in @lowercase and char in @lowercase) or (prev in @uppercase and char in @uppercase) -> [char | list]
+      char, [prev | rest] = list ->
         if :string.to_lower([char]) == :string.to_lower([prev]) do
-          {nil, tl(list)}
+          rest
         else
-          {char, [char | list]}
+          [char | list]
         end
     end)
-    |> elem(1)
-    |> Enum.reverse()
-
-    if length(result) != length do
-      reduce_string(result, length(result))
-    else
-      result
-    end
   end
 
 end
