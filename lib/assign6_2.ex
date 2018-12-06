@@ -21,7 +21,7 @@ defmodule Assign6_2 do
   end
 
   def calculate_manhatten_distance({coord1_x, coord1_y}, {coord2_x, coord2_y}) do
-    abs(abs(coord1_x - coord2_x) + abs(coord1_y - coord2_y))
+    abs(coord1_x - coord2_x) + abs(coord1_y - coord2_y)
   end
 
   def find_total_matching_distance(coord_map, coord) do
