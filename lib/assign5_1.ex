@@ -1,8 +1,6 @@
 defmodule Assign5_1 do
   @moduledoc false
 
-  @lowercase ?a..?z
-
   def assignment do
     data = "data/assign5.data"
            |> File.read!()
@@ -15,12 +13,8 @@ defmodule Assign5_1 do
     string
     |> Enum.reduce([], fn
       char, [] -> [char]
-      char, [prev | rest] = list ->
-        if :string.to_lower([char]) == :string.to_lower([prev]) do
-          rest
-        else
-          [char | list]
-        end
+      char, [prev | rest] when abs(char - prev) == 32 -> rest
+      char, list -> [char | list]
     end)
   end
 
