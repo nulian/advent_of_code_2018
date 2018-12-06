@@ -34,7 +34,7 @@ defmodule Assign6_2 do
   end
 
   def coord_loop(coord_map, {minx, miny, maxx, maxy}) do
-    result = Enum.reduce((minx)..(maxx), 0, fn x, acc ->
+    Enum.reduce((minx)..(maxx), 0, fn x, acc ->
       Enum.reduce((miny)..(maxy), acc, fn y, com ->
         scan_coord = {x, y}
         case find_total_matching_distance(coord_map, scan_coord) do

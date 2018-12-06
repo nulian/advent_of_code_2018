@@ -77,28 +77,28 @@ defmodule Assign6_1 do
   def calculate_owned_area(coord_map, coord_index, {minx, miny, maxx, maxy}) do
     {x, y} = coord = Map.fetch!(coord_map, coord_index)
 
-    coord_maxx = Enum.reduce_while((x+1)..maxx, x, fn mx, acc ->
+    coord_maxx = Enum.reduce_while(x..maxx, x, fn mx, acc ->
       case Assign6_1.find_closest_matching_coords(coord_map, {mx, y}) do
         [{_, ^coord_index}] -> {:cont, mx}
         _ -> {:halt, acc}
       end
     end)
 
-    coord_minx = Enum.reduce_while((x-1)..minx, x, fn mx, acc ->
+    coord_minx = Enum.reduce_while(x..minx, x, fn mx, acc ->
       case Assign6_1.find_closest_matching_coords(coord_map, {mx, y}) do
         [{_, ^coord_index}] -> {:cont, mx}
         _ -> {:halt, acc}
       end
     end)
 
-    coord_maxy = Enum.reduce_while((y+1)..maxy, y, fn my, acc ->
+    coord_maxy = Enum.reduce_while(y..maxy, y, fn my, acc ->
       case Assign6_1.find_closest_matching_coords(coord_map, {x, my}) do
         [{_, ^coord_index}] -> {:cont, my}
         _ -> {:halt, acc}
       end
     end)
 
-    coord_miny = Enum.reduce_while((y-1)..miny, y, fn my, acc ->
+    coord_miny = Enum.reduce_while(y..miny, y, fn my, acc ->
       case Assign6_1.find_closest_matching_coords(coord_map, {x, my}) do
         [{_, ^coord_index}] -> {:cont, my}
         _ -> {:halt, acc}
