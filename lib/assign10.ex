@@ -1,4 +1,4 @@
-defmodule Assign10_1 do
+defmodule Assign10 do
   @moduledoc false
 
   defmodule Point do
