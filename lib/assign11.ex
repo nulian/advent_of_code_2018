@@ -2,7 +2,6 @@ defmodule Assign11 do
   @moduledoc false
 
   @size 300
-  @serial 8
 
   def assignment(serial) do
     Enum.reduce(1..@size, %{}, fn y, acum ->
